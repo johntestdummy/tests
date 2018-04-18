@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialManagerApi", "SocialManagerApi\SocialManagerApi.csproj", "{88F85D33-E82C-4F5A-98B6-1AC1868D1A14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialManagerLibrary", "SocialManagerLibrary\SocialManagerLibrary.csproj", "{8C2676B2-1EA9-49D2-87BB-8EE81B29AD3D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{88F85D33-E82C-4F5A-98B6-1AC1868D1A14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88F85D33-E82C-4F5A-98B6-1AC1868D1A14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88F85D33-E82C-4F5A-98B6-1AC1868D1A14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88F85D33-E82C-4F5A-98B6-1AC1868D1A14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C2676B2-1EA9-49D2-87BB-8EE81B29AD3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C2676B2-1EA9-49D2-87BB-8EE81B29AD3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C2676B2-1EA9-49D2-87BB-8EE81B29AD3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C2676B2-1EA9-49D2-87BB-8EE81B29AD3D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {301C4E50-945C-45EF-AAFE-26A17F2D81E3}
+	EndGlobalSection
+EndGlobal
