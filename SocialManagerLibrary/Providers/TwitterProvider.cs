@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SocialManagerLibrary
+namespace SocialManagerLibrary.Providers
 {
-    public class Class1
+    class TwitterProvider
     {
     }
 }
