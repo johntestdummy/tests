@@ -1,5 +1,4 @@
-﻿using LinqToTwitter;
-using SocialManagerLibrary.Entities;
+﻿using SocialManagerLibrary.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

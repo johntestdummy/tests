@@ -4,18 +4,28 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using SocialManagerLibrary;
 using Swashbuckle.Swagger.Annotations;
 
 namespace SocialManagerApi.Controllers
 {
     public class TwitterController : ApiController
     {
+        private IMessagesSearch _messagesSearch;
+
+        public TwitterController(IMessagesSearch messagesSearch)
+        {
+            _messagesSearch = messagesSearch;
+        }
+
         // GET api/values
         [SwaggerOperation("GetTweets")]
-        [Route("/v1/tweet/{query}")]
-        public IEnumerable<string> GetTweets(string query)
+        [Route("v1/tweet/{query}")]
+        public HttpResponseMessage GetTweets(string query)
         {
-            return new string[] { "value1", "value2" };
+            var tweets = _messagesSearch.GetLast(query, 10);
+            var messages = tweets.Select(x => x.Text).ToArray();
+            return Request.CreateResponse(HttpStatusCode.OK, messages);
         }
 
     //    // GET api/values/5
@@ -49,5 +59,5 @@ namespace SocialManagerApi.Controllers
     //    public void Delete(int id)
     //    {
     //    }
-    //}
+    }
 }

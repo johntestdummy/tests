@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Castle.Windsor;
+using SocialManagerApi.IoC;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +14,9 @@ namespace SocialManagerApi
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
+
+            var container = new WindsorContainer();
+            container.Install(new ApiWindsorInstaller());
         }
     }
 }
