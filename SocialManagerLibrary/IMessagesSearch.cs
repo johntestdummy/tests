@@ -9,6 +9,6 @@ namespace SocialManagerLibrary
 {
     public interface IMessagesSearch
     {
-        IList<Message> GetLast(string author, short count);
+        IList<Message> GetLast(string query, short count);
     }
 }
