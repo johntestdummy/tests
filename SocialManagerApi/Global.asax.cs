@@ -14,9 +14,6 @@ namespace SocialManagerApi
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
-
-            var container = new WindsorContainer();
-            container.Install(new ApiWindsorInstaller());
         }
     }
 }

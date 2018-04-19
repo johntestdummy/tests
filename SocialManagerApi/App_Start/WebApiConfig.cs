@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SocialManagerApi.IoC;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -19,6 +20,8 @@ namespace SocialManagerApi
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.DependencyResolver = CastleHelper.GetDependencyResolver();
         }
     }
 }

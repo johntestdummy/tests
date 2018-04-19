@@ -115,6 +115,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="IoC\ApiWindsorInstaller.cs" />
+    <Compile Include="IoC\CastleHelper.cs" />
+    <Compile Include="IoC\WindsorDependencyScope.cs" />
+    <Compile Include="IoC\WindsorHttpDependecyResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -132,6 +135,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SocialManagerLibrary\SocialManagerLibrary.csproj">

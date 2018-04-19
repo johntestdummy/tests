@@ -11,6 +11,17 @@ namespace SocialManagerLibrary.Providers
     {
         public IList<Message> GetLast(string query, short count)
         {
+            try
+            {
+                var api = new ApiComm();
+                var res = api.Post();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
             return new List<Message>() {
                 new Message() { Author = "Author", Text = "Este es un tweet dummy", Posted = DateTime.Now.AddDays(-4) }
             };            
