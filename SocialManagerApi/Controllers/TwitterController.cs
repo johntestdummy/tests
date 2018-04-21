@@ -4,60 +4,50 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using SocialManagerApi.Filters;
+using SocialManagerApi.Models;
 using SocialManagerLibrary;
+using SocialManagerLibrary.Entities;
+using SocialManagerLibrary.Interfaces;
 using Swashbuckle.Swagger.Annotations;
 
 namespace SocialManagerApi.Controllers
 {
+    [ValidateModel]
     public class TwitterController : ApiController
     {
-        private IMessagesSearch _messagesSearch;
+        private readonly IMessagesSearch _tweetsSearch;
 
-        public TwitterController(IMessagesSearch messagesSearch)
+        public TwitterController(IMessagesSearch tweetsSearch)
         {
-            _messagesSearch = messagesSearch;
+            _tweetsSearch = tweetsSearch;
         }
 
-        // GET api/values
+        [HttpGet]
+        [Route("v1/tweet/search")]
         [SwaggerOperation("GetTweets")]
-        [Route("v1/tweet/{query}")]
-        public HttpResponseMessage GetTweets(string query)
+        public HttpResponseMessage GetTweets([FromUri]SearchRequestDto request)
         {
-            var tweets = _messagesSearch.GetLast(query, 10);
-            var messages = tweets.Select(x => x.Text).ToArray();
-            return Request.CreateResponse(HttpStatusCode.OK, messages);
+            try
+            {
+                var tweets = _tweetsSearch.GetLast(new Query()
+                {
+                    Term = request.Query,
+                    Count = request.Count
+                });
+
+                if (tweets == null)
+                    return Request.CreateResponse(HttpStatusCode.NoContent);
+
+                var response = tweets.Select(x => x.Text).ToArray();
+                return Request.CreateResponse(HttpStatusCode.OK, response);
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Ha habido un error procesando la peticion");
+            }
+
         }
 
-    //    // GET api/values/5
-    //    [SwaggerOperation("GetById")]
-    //    [SwaggerResponse(HttpStatusCode.OK)]
-    //    [SwaggerResponse(HttpStatusCode.NotFound)]
-    //    public string Get(int id)
-    //    {
-    //        return "value";
-    //    }
-
-    //    // POST api/values
-    //    [SwaggerOperation("Create")]
-    //    [SwaggerResponse(HttpStatusCode.Created)]
-    //    public void Post([FromBody]string value)
-    //    {
-    //    }
-
-    //    // PUT api/values/5
-    //    [SwaggerOperation("Update")]
-    //    [SwaggerResponse(HttpStatusCode.OK)]
-    //    [SwaggerResponse(HttpStatusCode.NotFound)]
-    //    public void Put(int id, [FromBody]string value)
-    //    {
-    //    }
-
-    //    // DELETE api/values/5
-    //    [SwaggerOperation("Delete")]
-    //    [SwaggerResponse(HttpStatusCode.OK)]
-    //    [SwaggerResponse(HttpStatusCode.NotFound)]
-    //    public void Delete(int id)
-    //    {
-    //    }
     }
 }

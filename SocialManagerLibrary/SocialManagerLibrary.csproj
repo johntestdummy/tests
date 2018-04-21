@@ -30,7 +30,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,11 +44,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants\ConfigKeys.cs" />
     <Compile Include="Entities\Message.cs" />
+    <Compile Include="Entities\Query.cs" />
+    <Compile Include="Entities\Twitter\Entities.cs" />
+    <Compile Include="Entities\Twitter\Metadata.cs" />
+    <Compile Include="Entities\Twitter\SearchMetadata.cs" />
+    <Compile Include="Entities\Twitter\Status.cs" />
+    <Compile Include="Entities\Twitter\TwitterSearchResponse.cs" />
+    <Compile Include="Entities\Twitter\TwUrl.cs" />
+    <Compile Include="Entities\Twitter\User.cs" />
+    <Compile Include="Helpers\UrlHelper.cs" />
     <Compile Include="Interfaces\IMessagesSearch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Providers\ApiComm.cs" />
-    <Compile Include="Providers\TwitterProvider.cs" />
+    <Compile Include="Providers\IApiConnectionHandler.cs" />
+    <Compile Include="Providers\TwitterApiConnectionHandler.cs" />
+    <Compile Include="Providers\ConfigurationFileProvider.cs" />
+    <Compile Include="Providers\IConfigurationProvider.cs" />
+    <Compile Include="Providers\TwitterMessagesProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

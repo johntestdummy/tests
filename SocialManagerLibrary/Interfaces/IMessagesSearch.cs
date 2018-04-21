@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SocialManagerLibrary
+namespace SocialManagerLibrary.Interfaces
 {
     public interface IMessagesSearch
     {
-        IList<Message> GetLast(string query, short count);
+        IList<Message> GetLast(Query query);
     }
 }

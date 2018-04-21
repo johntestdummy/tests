@@ -2,6 +2,8 @@
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using SocialManagerApi.Controllers;
+using SocialManagerLibrary.Interfaces;
+using SocialManagerLibrary.Providers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +17,13 @@ namespace SocialManagerApi.IoC
         {
             container.Register(
                 Classes.FromThisAssembly().BasedOn<TwitterController>().LifestylePerWebRequest(),
-                Component.For<SocialManagerLibrary.IMessagesSearch>()
-                                .ImplementedBy<SocialManagerLibrary.Providers.TwitterProvider>()
-                                .LifestylePerWebRequest());
+                Component.For<IMessagesSearch>()
+                    .ImplementedBy<TwitterMessagesProvider>().LifestylePerWebRequest(),
+                Component.For<IConfigurationProvider>()
+                    .ImplementedBy<ConfigurationFileProvider>().LifestylePerWebRequest(),
+                Component.For<IApiConnectionHandler>()
+                    .ImplementedBy<TwitterApiConnectionHandler>().LifestylePerWebRequest()
+            );
         }
     }
 
