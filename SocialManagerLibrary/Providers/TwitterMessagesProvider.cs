@@ -16,15 +16,7 @@ namespace SocialManagerLibrary.Providers
 
         public IList<Message> GetLast(Query query)
         {
-            try
-            {
-                return _apiTwitter.Search(query);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
+            return _apiTwitter.Search(query);
         }
         
     }

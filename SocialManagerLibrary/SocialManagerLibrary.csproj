@@ -57,10 +57,10 @@
     <Compile Include="Helpers\UrlHelper.cs" />
     <Compile Include="Interfaces\IMessagesSearch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Providers\IApiConnectionHandler.cs" />
+    <Compile Include="Interfaces\IApiConnectionHandler.cs" />
     <Compile Include="Providers\TwitterApiConnectionHandler.cs" />
     <Compile Include="Providers\ConfigurationFileProvider.cs" />
-    <Compile Include="Providers\IConfigurationProvider.cs" />
+    <Compile Include="Interfaces\IConfigurationProvider.cs" />
     <Compile Include="Providers\TwitterMessagesProvider.cs" />
   </ItemGroup>
   <ItemGroup>
