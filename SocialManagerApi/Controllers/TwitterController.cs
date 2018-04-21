@@ -42,7 +42,7 @@ namespace SocialManagerApi.Controllers
                 var response = tweets.Select(x => x.Text).ToArray();
                 return Request.CreateResponse(HttpStatusCode.OK, response);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, "Ha habido un error procesando la peticion");
             }

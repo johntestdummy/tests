@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SocialManagerLibrary.Entities.Twitter
+namespace SocialManagerLibrary.Entities.Tw
 {
     public class TwUrl
     {
@@ -9,5 +9,4 @@ namespace SocialManagerLibrary.Entities.Twitter
         public string DisplayUrl { get; set; }
         public IList<int> Indices { get; set; }
     }
-
 }

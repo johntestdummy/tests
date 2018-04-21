@@ -9,8 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft;
 using Newtonsoft.Json;
-using SocialManagerLibrary.Entities.Twitter;
 using SocialManagerLibrary.Helpers;
+using SocialManagerLibrary.Entities.Tw;
 
 namespace SocialManagerLibrary.Providers
 {
@@ -30,22 +30,21 @@ namespace SocialManagerLibrary.Providers
             var twResponse = SearchTwitter(query);
             response = twResponse?.Statuses?.Select(x => new Message()
             {
-                Author = x.User.ScreenName,
-                Posted = DateTime.ParseExact(x.CreatedAt, "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture),
+                Author = x.User.Name,
                 Text = x.Text
             }).ToList();
 
             return response;
         }
 
-        private TwitterSearchResponse SearchTwitter(Query query)
+        private TweetsResponse SearchTwitter(Query query)
         {
             using (var client = new HttpClient())
             {
                 var parameters = GetSearchQueryParams(query);
                 var apiUrl = UrlHelper.GetUri(_configuration.GetValue<string>(ConfigKeys.TWITTER_API_URI_SEARCH), parameters);
 
-                client.DefaultRequestHeaders.Add("Authorization", string.Format("Bearer {0}", _configuration.GetValue<string>(ConfigKeys.OAUTH_TOKEN_SECRET)));
+                client.DefaultRequestHeaders.Add("Authorization", $"Bearer { _configuration.GetValue<string>(ConfigKeys.OAUTH_TOKEN_SECRET) }");
 
                 var response = client.GetAsync(apiUrl).Result;
 
@@ -54,7 +53,7 @@ namespace SocialManagerLibrary.Providers
                     var responseContent = response.Content;
                     string responseString = responseContent.ReadAsStringAsync().Result;
 
-                    return (TwitterSearchResponse)JsonConvert.DeserializeObject(responseString, typeof(TwitterSearchResponse));
+                    return (TweetsResponse)JsonConvert.DeserializeObject(responseString, typeof(TweetsResponse));
                 }
             }
             return null;
@@ -65,6 +64,8 @@ namespace SocialManagerLibrary.Providers
             var parameters = new Dictionary<string, string>();
             parameters.Add("q", query.Term);
             parameters.Add("count", query.Count.ToString());
+            parameters.Add("lang", "es");
+            parameters.Add("include_entities", "false");
             return parameters;
         }
 
