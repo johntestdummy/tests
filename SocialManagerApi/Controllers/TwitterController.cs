@@ -39,8 +39,7 @@ namespace SocialManagerApi.Controllers
                 if (tweets == null)
                     return Request.CreateResponse(HttpStatusCode.NoContent);
 
-                var response = tweets.Select(x => x.Text).ToArray();
-                return Request.CreateResponse(HttpStatusCode.OK, response);
+                return Request.CreateResponse(HttpStatusCode.OK, tweets);
             }
             catch (Exception ex)
             {

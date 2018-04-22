@@ -4,6 +4,7 @@ using Moq;
 using NUnit.Framework;
 using SocialManagerLibrary.Entities;
 using SocialManagerLibrary.Providers;
+using SocialManagerUnitTests.Helper;
 
 namespace SocialManagerUnitTests
 {
@@ -25,17 +26,12 @@ namespace SocialManagerUnitTests
         [Test]
         public void TestSearch()
         {
-            var list = new List<Message>() {
-                new Message()
-                {
-                    Text = "Test message!"
-                }
-            };
-            _connHandler.Setup(x => x.Search(It.IsAny<Query>())).Returns(list);
+            _connHandler.Setup(x => x.Search(It.IsAny<Query>())).Returns(TestHelpers.GetTweets());
 
             var response = Sut.GetLast(new Query { Count = 10, Term = "test" });
 
-            Assert.AreEqual(response, list);
+            Assert.AreEqual(response.Count, 1);
         }
+
     }
 }

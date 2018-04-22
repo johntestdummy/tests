@@ -10,6 +10,5 @@ namespace SocialManagerLibrary.Entities
     {
         public string Text { get; set; }
         public string Author { get; set; }
-        public DateTime Posted { get; set; }
     }
 }
