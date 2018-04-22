@@ -1,16 +1,9 @@
 ﻿using SocialManagerLibrary.Constants;
 using SocialManagerLibrary.Entities;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft;
-using Newtonsoft.Json;
 using SocialManagerLibrary.Helpers;
-using SocialManagerLibrary.Entities.Tw;
 
 namespace SocialManagerLibrary.Providers
 {
