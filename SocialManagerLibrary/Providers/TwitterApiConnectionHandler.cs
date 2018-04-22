@@ -23,21 +23,7 @@ namespace SocialManagerLibrary.Providers
             _configuration = configuration;
         }
         
-        public List<Message> Search(Query query)
-        {
-            var response = new List<Message>();
-
-            var twResponse = SearchTwitter(query);
-            response = twResponse?.Statuses?.Select(x => new Message()
-            {
-                Author = x.User.Name,
-                Text = x.Text
-            }).ToList();
-
-            return response;
-        }
-
-        private TweetsResponse SearchTwitter(Query query)
+        public string Search(Query query)
         {
             using (var client = new HttpClient())
             {
@@ -53,7 +39,7 @@ namespace SocialManagerLibrary.Providers
                     var responseContent = response.Content;
                     string responseString = responseContent.ReadAsStringAsync().Result;
 
-                    return (TweetsResponse)JsonConvert.DeserializeObject(responseString, typeof(TweetsResponse));
+                    return responseString.ToString();
                 }
             }
             return null;

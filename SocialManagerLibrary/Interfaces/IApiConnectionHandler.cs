@@ -6,6 +6,6 @@ namespace SocialManagerLibrary.Providers
 {
     public interface IApiConnectionHandler
     {
-        List<Message> Search(Query query);
+        string Search(Query query);
     }
 }
